@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Personaje_principal = SpriteKind.create()
+}
 let mario = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
@@ -15,7 +18,7 @@ let mario = sprites.create(img`
     . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Personaje_principal)
 controller.moveSprite(mario, 100, 0)
 mario.setPosition(10, 185)
 scene.cameraFollowSprite(mario)
