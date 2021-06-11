@@ -20,7 +20,8 @@ let mario = sprites.create(img`
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Personaje_principal)
 controller.moveSprite(mario, 100, 0)
-mario.setPosition(10, 185)
+mario.setPosition(10, 182)
+mario.ay = 300
 scene.cameraFollowSprite(mario)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
