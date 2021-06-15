@@ -1,6 +1,10 @@
 namespace SpriteKind {
     export const Personaje_principal = SpriteKind.create()
+    export const Premio_Final = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Personaje_principal, SpriteKind.Premio_Final, function (sprite, otherSprite) {
+    game.over(true, effects.confetti)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mario.isHittingTile(CollisionDirection.Bottom)) {
         mario.setVelocity(0, -75)
@@ -8,9 +12,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 info.onLifeZero(function () {
     game.over(false)
-})
-sprites.onOverlap(SpriteKind.Personaje_principal, SpriteKind.Food, function (sprite, otherSprite) {
-    game.over(true)
 })
 let mario: Sprite = null
 mario = sprites.create(img`
@@ -64,13 +65,7 @@ let hamburguesa = sprites.create(img`
     ......ffebbbbbb44444444eee......
     .........fffffffcccccee.........
     ................................
-    `, SpriteKind.Food)
-controller.moveSprite(mario, 100, 0)
-mario.setPosition(8, 0)
-hamburguesa.setPosition(230, 0)
-mario.ay = 300
-hamburguesa.ay = 300
-scene.cameraFollowSprite(mario)
+    `, SpriteKind.Premio_Final)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -195,9 +190,16 @@ scene.setBackgroundImage(img`
     `)
 tiles.setTilemap(tilemap`level1`)
 effects.clouds.startScreenEffect()
+scene.cameraFollowSprite(mario)
+mario.setPosition(8, 0)
+hamburguesa.setPosition(230, 0)
+mario.ay = 300
+hamburguesa.ay = 300
+controller.moveSprite(mario, 100, 0)
 info.setLife(3)
 game.onUpdate(function () {
     if (mario.tileKindAt(TileDirection.Bottom, sprites.dungeon.darkGroundCenter)) {
-        info.changeLifeBy(-3)
+        info.changeLifeBy(-1)
+        mario.setPosition(8, 0)
     }
 })
