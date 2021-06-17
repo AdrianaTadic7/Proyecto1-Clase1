@@ -23,6 +23,7 @@ info.onLifeZero(function () {
     game.over(false)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.pewPew.play()
     calavera.destroy()
 })
 let projectile: Sprite = null
