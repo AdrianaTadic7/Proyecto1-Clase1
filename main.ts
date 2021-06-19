@@ -42,14 +42,12 @@ function calavera_aparicion () {
         ........................
         ........................
         `, SpriteKind.Enemy)
-    calavera.setPosition(50, 0)
-    calavera.ay = 50
-    calavera.setVelocity(0, 60)
-    calavera.setBounceOnWall(true)
+    calavera.setPosition(200, 60)
+    calavera.setVelocity(-145, 0)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mario.isHittingTile(CollisionDirection.Bottom)) {
-        mario.setVelocity(0, -200)
+        mario.setVelocity(0, -100)
     }
 })
 info.onLifeZero(function () {
